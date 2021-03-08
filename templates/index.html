@@ -7,9 +7,14 @@
 <body>
 <h1>A3AJAGBE LIBRARY</h1>
 
+    {% for book in books %}
     <ul>
-        <li></li>
+        <li>{{book.title}}</li>
+        <li>{{book.author}}</li>
+        <li>{{book.rating}}</li>
     </ul>
+
+    {% endfor %}
 
 <a href="{{ url_for('add')}}">Add New Book</a>
 </body>
