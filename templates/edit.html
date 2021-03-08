@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A3AJAGBE LIBRARY | Edit Rating</title>
+</head>
+<body>
+<h1>A3AJAGBE LIBRARY</h1>
+
+<h3>Edit Rating</h3>
+
+<strong>Book Title: </strong> {{ book_edit.title }} <br>
+<strong>Book Author: </strong> {{ book_edit.author }} <br>
+<strong>Current Book Rating: </strong>{{ book_edit.rating }}/10 <br>
+
+<form action="" method="POST">
+    <input type="text" name="new_rating">
+    <input type="submit" value="Update Rating">
+ <br>
+</form>
+
+<a href="{{ url_for('index')}}">Back Home</a>
+</body>
+</html>
