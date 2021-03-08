@@ -1,15 +1,26 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
 
+all_books = []
+
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', books=all_books)
 
 
-@app.route('/add')
+@app.route('/add', methods=["GET", "POST"])
 def add():
+    if request.method == 'POST':
+        new_book = {
+            "title": request.form['book_name'],
+            "author": request.form['author'],
+            "rating": request.form['rating'],
+        }
+        all_books.append(new_book)
+        return redirect(url_for('index'))
     return render_template('add.html')
 
 
