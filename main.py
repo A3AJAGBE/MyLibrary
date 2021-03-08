@@ -19,8 +19,6 @@ class Books(db.Model):
 
 db.create_all()
 
-# all_books = []
-
 
 @app.route('/')
 def index():
@@ -37,9 +35,18 @@ def add():
             rating=request.form['rating'])
         db.session.add(new_book)
         db.session.commit()
-        # all_books.append(new_book)
         return redirect(url_for('index'))
     return render_template('add.html')
+
+
+@app.route('/edit/<int:book_id>', methods=["GET", "POST"])
+def edit(book_id):
+    book_edit = Books.query.get(book_id)
+    if request.method == 'POST':
+        book_edit.rating = request.form['new_rating']
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('edit.html', book_edit=book_edit)
 
 
 if __name__ == '__main__':
