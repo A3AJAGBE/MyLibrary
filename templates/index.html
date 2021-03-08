@@ -7,15 +7,17 @@
 <body>
 <h1>A3AJAGBE LIBRARY</h1>
 
-    {% for book in books %}
-    <ul>
-        <li>{{book.title}}</li>
-        <li>{{book.author}}</li>
-        <li>{{book.rating}}</li>
-    </ul>
+    {% if books == [] %}
 
-    {% endfor %}
+        <h3>Libary Empty</h3>
+    {% else %}
+        {% for book in books %}
+        <ul>
+            <li>{{book.title}} - {{book.author}} - {{book.rating}}/10</li>
+        </ul>
 
+        {% endfor %}
+    {% endif %}
 <a href="{{ url_for('add')}}">Add New Book</a>
 </body>
 </html>
